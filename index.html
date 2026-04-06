@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FF6B1A">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Pandey Namkeen & Biscuits</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --saffron: #FF6B1A;
+            --gold: #F5A623;
+            --deep: #1A0A00;
+            --cream: #FFF8F0;
+            --white: #FFFFFF;
+            --green: #25D366;
+            --text: #3D2B1A;
+            --muted: #8A6F5A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ── HEADER ── */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            background: rgba(26,10,0,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(245,166,35,0.25);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--saffron), var(--gold));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .logo-text {
+            line-height: 1.1;
+        }
+
+        .logo-text strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.75rem;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.25s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--white);
+            background: rgba(245,166,35,0.18);
+        }
+
+        .nav-order-btn {
+            background: linear-gradient(135deg, var(--saffron), var(--gold));
+            color: white !important;
+            padding: 9px 20px !important;
+            border-radius: 25px !important;
+            font-weight: 600 !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            background: var(--deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(255,107,26,0.25) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(245,166,35,0.2) 0%, transparent 45%),
+                radial-gradient(circle at 60% 80%, rgba(255,107,26,0.12) 0%, transparent 40%);
+        }
+
+        .hero-dots {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(245,166,35,0.12) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            padding: 0 20px;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245,166,35,0.15);
+            border: 1px solid rgba(245,166,35,0.35);
+            color: var(--gold);
+            padding: 7px 18px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.05;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 span { color: var(--gold); }
+
+        .hero-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: clamp(1.3rem, 4vw, 2rem);
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--saffron), var(--gold));
+            color: white;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(255,107,26,0.45);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,107,26,0.55);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1rem;
+            text-decoration: none;
+            border: 1.5px solid rgba(255,255,255,0.3);
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.6);
+            transform: translateY(-3px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: fadeUpDown 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeUpDown {
+            0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 0.8; transform: translateX(-50%) translateY(-6px); }
+        }
+
+        /* ── SECTION COMMON ── */
+        section { padding: 100px 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(255,107,26,0.12), rgba(245,166,35,0.12));
+            border: 1px solid rgba(255,107,26,0.25);
+            color: var(--saffron);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 25px;
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            color: var(--deep);
+            line-height: 1.2;
+        }
+
+        .section-title .accent { color: var(--saffron); }
+
+        .section-sub {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 1.1rem;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+
+        /* ── CATEGORIES TABS ── */
+        .products { background: var(--cream); }
+
+        .cat-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .cat-tab {
+            padding: 10px 24px;
+            border-radius: 25px;
+            border: 1.5px solid rgba(255,107,26,0.25);
+            background: transparent;
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.25s;
+        }
+
+        .cat-tab:hover { border-color: var(--saffron); color: var(--saffron); }
+
+        .cat-tab.active {
+            background: linear-gradient(135deg, var(--saffron), var(--gold));
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 6px 20px rgba(255,107,26,0.35);
+        }
+
+        /* ── PRODUCT GRID ── */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+            border-color: rgba(255,107,26,0.2);
+        }
+
+        .product-card.hidden { display: none; }
+
+        .product-img {
+            height: 160px;
+            background: linear-gradient(135deg, #FFF0E6, #FFEEDD);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, var(--saffron), var(--gold));
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .product-body {
+            padding: 20px;
+        }
+
+        .product-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--deep);
+            margin-bottom: 3px;
+        }
+
+        .product-body .hindi-name {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .product-body .desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .product-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .price-block {}
+
+        .price-block .weight {
+            font-size: 0.72rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-block .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--saffron);
+        }
+
+        .add-btn {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--saffron), var(--gold));
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s;
+        }
+
+        .add-btn:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(255,107,26,0.4); }
+
+        .add-btn.added {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
+
+        /* ── CART ── */
+        .cart-bar {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            background: var(--deep);
+            color: white;
+            padding: 16px 30px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+            z-index: 900;
+            transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+            min-width: 320px;
+            justify-content: space-between;
+        }
+
+        .cart-bar.visible { transform: translateX(-50%) translateY(0); }
+
+        .cart-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .cart-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--saffron), var(--gold));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 18px;
+            height: 18px;
+            background: white;
+            color: var(--saffron);
+            border-radius: 50%;
+            font-size: 0.65rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-details small {
+            display: block;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.75rem;
+        }
+
+        .cart-details strong {
+            font-size: 1rem;
+        }
+
+        .checkout-btn {
+            background: linear-gradient(135deg, var(--saffron), var(--gold));
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .checkout-btn:hover { transform: scale(1.05); }
+
+        /* ── ORDER MODAL ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.65);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.open { display: flex; }
+
+        .modal {
+            background: white;
+            border-radius: 24px;
+            padding: 36px;
+            max-width: 520px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.35s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 32px;
+            height: 32px;
+            background: #f3f4f6;
+            border: none;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            transition: background 0.2s;
+        }
+
+        .modal-close:hover { background: #e5e7eb; }
+
+        .modal h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 6px;
+            color: var(--deep);
+        }
+
+        .modal-subtitle {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .cart-items-list {
+            border: 1px solid #f0f0f0;
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .cart-item-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f0f0;
+            gap: 12px;
+        }
+
+        .cart-item-row:last-child { border-bottom: none; }
+
+        .cart-item-row .item-emoji { font-size: 1.5rem; flex-shrink: 0; }
+
+        .cart-item-row .item-name {
+            flex: 1;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .item-qty-ctrl {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .qty-btn {
+            width: 28px;
+            height: 28px;
+            border: 1.5px solid rgba(255,107,26,0.3);
+            background: transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--saffron);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .qty-btn:hover { background: var(--saffron); color: white; border-color: var(--saffron); }
+
+        .qty-num { font-weight: 600; min-width: 20px; text-align: center; font-size: 0.9rem; }
+
+        .item-subtotal { font-weight: 600; color: var(--saffron); font-size: 0.95rem; min-width: 60px; text-align: right; }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 18px;
+            background: linear-gradient(135deg, rgba(255,107,26,0.06), rgba(245,166,35,0.06));
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .cart-total-row .label { font-size: 0.9rem; color: var(--muted); }
+
+        .cart-total-row .total { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--saffron); }
+
+        /* Form */
+        .order-form label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+            letter-spacing: 0.3px;
+        }
+
+        .order-form input,
+        .order-form textarea,
+        .order-form select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid #e8e8e8;
+            border-radius: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text);
+            background: #fafafa;
+            transition: border 0.2s;
+            margin-bottom: 14px;
+        }
+
+        .order-form input:focus,
+        .order-form textarea:focus,
+        .order-form select:focus {
+            outline: none;
+            border-color: var(--saffron);
+            background: white;
+        }
+
+        .order-form textarea { height: 80px; resize: none; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .submit-order {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--saffron), var(--gold));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(255,107,26,0.35);
+        }
+
+        .submit-order:hover { transform: translateY(-2px); box-shadow: 0 14px 35px rgba(255,107,26,0.45); }
+
+        .or-divider {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin: 14px 0;
+            position: relative;
+        }
+
+        .or-divider::before, .or-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 43%;
+            height: 1px;
+            background: #e8e8e8;
+        }
+
+        .or-divider::before { left: 0; }
+        .or-divider::after { right: 0; }
+
+        .whatsapp-order {
+            width: 100%;
+            padding: 14px;
+            background: var(--green);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(37,211,102,0.3);
+            text-decoration: none;
+        }
+
+        .whatsapp-order:hover { transform: translateY(-2px); box-shadow: 0 14px 35px rgba(37,211,102,0.4); }
+
+        /* ── SUCCESS SCREEN ── */
+        .success-screen {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .success-screen.show { display: block; }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+            color: white;
+        }
+
+        .success-screen h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 10px; color: var(--deep); }
+        .success-screen p { color: var(--muted); font-size: 0.95rem; margin-bottom: 6px; }
+
+        /* ── ABOUT ── */
+        .about { background: white; }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-main-card {
+            background: linear-gradient(135deg, var(--saffron), var(--gold));
+            border-radius: 30px;
+            padding: 50px;
+            text-align: center;
+            font-size: 6rem;
+            box-shadow: 0 25px 60px rgba(255,107,26,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-main-card::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .about-floating {
+            position: absolute;
+            background: white;
+            border-radius: 18px;
+            padding: 14px 20px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-floating.tl { top: -15px; left: -20px; }
+        .about-floating.br { bottom: -15px; right: -20px; }
+
+        .about-floating .emoji { font-size: 1.5rem; }
+        .about-floating .fl-text strong { display: block; font-size: 0.9rem; font-weight: 600; color: var(--deep); }
+        .about-floating .fl-text span { font-size: 0.75rem; color: var(--muted); }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--deep);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .about-text p {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .stat-box {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 18px 14px;
+            text-align: center;
+            border: 1px solid rgba(255,107,26,0.12);
+        }
+
+        .stat-box .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--saffron);
+        }
+
+        .stat-box .lbl {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* ── CONTACT ── */
+        .contact { background: var(--deep); }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-left .section-title { color: white; text-align: left; }
+        .contact-left .section-sub { color: rgba(255,255,255,0.5); text-align: left; margin-top: 6px; }
+        .contact-left .section-label { margin-bottom: 10px; }
+
+        .contact-info-block {
+            margin-top: 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.25s;
+            text-decoration: none;
+        }
+
+        .contact-card:hover { background: rgba(255,255,255,0.1); transform: translateX(6px); }
+
+        .contact-card-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-card-icon.saffron { background: linear-gradient(135deg, var(--saffron), var(--gold)); color: white; }
+        .contact-card-icon.green { background: linear-gradient(135deg, #22c55e, #16a34a); color: white; }
+        .contact-card-icon.blue { background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; }
+
+        .contact-card-text strong {
+            display: block;
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .contact-card-text span {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.82rem;
+        }
+
+        .contact-right {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 36px;
+        }
+
+        .contact-right h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .quick-form input,
+        .quick-form textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.07);
+            border: 1.5px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 13px 16px;
+            color: white;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+            transition: border 0.2s;
+        }
+
+        .quick-form input::placeholder,
+        .quick-form textarea::placeholder { color: rgba(255,255,255,0.35); }
+
+        .quick-form input:focus,
+        .quick-form textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .quick-form textarea { height: 90px; resize: none; }
+
+        .quick-form .btn-send {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--saffron), var(--gold));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .quick-form .btn-send:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,107,26,0.4); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #111;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 28px 20px;
+            font-size: 0.88rem;
+        }
+
+        footer span { color: var(--saffron); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .contact-left .section-title, .contact-left .section-sub { text-align: center; }
+            .contact-left .section-label { display: block; text-align: center; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(26,10,0,0.98);
+                flex-direction: column;
+                padding: 20px 0;
+                gap: 4px;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 12px 24px; border-radius: 0; font-size: 1rem; }
+            .about-visual { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+            .cart-bar { min-width: calc(100% - 40px); }
+            section { padding: 70px 0; }
+        }
+
+        @media (max-width: 480px) {
+            .modal { padding: 24px 18px; border-radius: 18px; }
+            .about-stats { grid-template-columns: 1fr 1fr; }
+            .about-stats .stat-box:last-child { grid-column: span 2; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+    <nav>
+        <a href="#home" class="logo">
+            <div class="logo-icon">🍪</div>
+            <div class="logo-text">
+                <strong>Pandey Namkeen</strong>
+                <span>पाण्डेय नमकीन एंड बिस्किट्स</span>
+            </div>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" class="nav-order-btn" onclick="openCart()">🛒 Order Now</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+</header>
+
+<!-- ── HERO ── -->
+<section id="home" class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-dots"></div>
+    <div class="hero-content">
+        <div class="hero-badge">🌟 Varanasi's Favourite Since 2005</div>
+        <h1>Pandey <span>Namkeen</span><br>& Biscuits</h1>
+        <div class="hero-hindi">पाण्डेय नमकीन एंड बिस्किट्स</div>
+        <p>घर जैसा स्वाद, शुद्ध सामग्री से बना — हर पल को खास बनाएं।</p>
+        <div class="hero-btns">
+            <a href="#products" class="btn-primary"><i class="fas fa-shopping-bag"></i> देखें मेनू</a>
+            <a href="#contact" class="btn-outline"><i class="fas fa-phone"></i> Contact Us</a>
+        </div>
+    </div>
+    <div class="hero-scroll">
+        <span>Scroll Down</span>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- ── PRODUCTS ── -->
+<section id="products" class="products">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">हमारे उत्पाद · Our Products</div>
+            <h2 class="section-title">Order Your <span class="accent">Favourite</span> Snacks</h2>
+            <p class="section-sub">ताज़ा और स्वादिष्ट नमकीन व बिस्किट</p>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="cat-tabs">
+            <button class="cat-tab active" data-cat="all">🍽️ All Items</button>
+            <button class="cat-tab" data-cat="namkeen">🥜 Namkeen · नमकीन</button>
+            <button class="cat-tab" data-cat="biscuit">🍪 Biscuits · बिस्किट</button>
+            <button class="cat-tab" data-cat="mithai">🍬 Mithai · मिठाई</button>
+            <button class="cat-tab" data-cat="special">⭐ Special Items</button>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="productsGrid">
+
+            <!-- NAMKEEN -->
+            <div class="product-card" data-cat="namkeen">
+                <div class="product-img">🥜<div class="product-badge">BESTSELLER</div></div>
+                <div class="product-body">
+                    <h3>Aloo Bhujia</h3>
+                    <div class="hindi-name">आलू भुजिया</div>
+                    <div class="desc">Classic crispy potato sev with blend of spices. Light & crunchy.</div>
+                    <div class="product-footer">
+                        <div class="price-block">
+                            <div class="weight">250g pack</div>
+                            <div class="price">₹60</div>
+                        </div>
+                        <button class="add-btn" onclick="addToCart(this, 'Aloo Bhujia', 60, '🥜')"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="namkeen">
+                <div class="product-img">🌾</div>
+                <div class="product-body">
+                    <h3>Moong Dal</h3>
+                    <div class="hindi-name">मूँग दाल</div>
+                    <div class="desc">Golden fried moong dal, lightly spiced and perfectly crunchy.</div>
+                    <div class="product-footer">
+                        <div class="price-block">
+                            <div class="weight">250g pack</div>
+                            <div class="price">₹70</div>
+                        </div>
+                        <button class="add-btn" onclick="addToCart(this, 'Moong Dal', 70, '🌾')"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="namkeen">
+                <div class="product-img">🌶️</div>
+                <div class="product-body">
+                    <h3>Kaju Mixture</h3>
+                    <div class="hindi-name">काजू मिक्सचर</div>
+                    <div class="desc">Premium mixed namkeen with cashews, dal, sev & dry fruits.</div>
+                    <div class="product-footer">
+                        <div class="price-block">
+                            <div class="weight">200g pack</div>
+                            <div class="price">₹120</div>
+                        </div>
+                        <button class="add-btn" onclick="addToCart(this, 'Kaju Mixture', 120, '🌶️')"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="namkeen">
+                <div class="product-img">🍿</div>
+                <div class="product-body">
+                    <h3>Masala Sev</h3>
+                    <div class="hindi-name">मसाला सेव</div>
+                    <div class="desc">Thin gram flour noodles deep fried with house masala blend.</div>
+                    <div class="product-footer">
+                        <div class="price-block">
+                            <div class="weight">250g pack</div>
+                            <div class="price">₹55</div>
+                        </div>
+                        <button class="add-btn" onclick="addToCart(this, 'Masala Sev', 55, '🍿')"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="namkeen">
+                <div class="product-img">🥙</div>
+                <div class="product-body">
+                    <h3>Chana Chur</h3>
+                    <div class="hindi-name">चना चूर</div>
+                    <div class="desc">Tangy spiced flattened chickpea namkeen — addictively crunchy.</div>
+                    <div class="product-footer">
+                        <div class="price-block">
+                            <div class="weight">300g pack</div>
+                            <div class="price">₹65</div>
+                        </div>
+                        <button class="add-btn" onclick="addToCart(this, 'Chana Chur', 65, '🥙')"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="namkeen">
+                <div class="product-img">🫘</div>
+                <div class="product-body">
+                    <h3>Matar (Green Peas)</h3>
+                    <div class="hindi-name">मटर नमकीन</div>
+                    <div class="desc">Fried green peas with chaat masala — guilt-free healthy snack.</div>
+                    <div class="product-footer">
+                        <div class="price-block">
+                            <div class="weight">200g pack</div>
+                            <div class="price">₹50</div>
+                        </div>
+                        <button class="add-btn" onclick="addToCart(this, 'Matar Namkeen', 50, '🫘')"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BISCUITS -->
+            <div class="product-card" data-cat="biscuit">
+                <div class="product-img">🍪<div class="product-badge">POPULAR</div></div>
+                <div class="product-body">
+                    <h3>Nankhatai</h3>
+                    <div class="hindi-name">नानखटाई</div>
+                    <div class="desc">Traditional ghee-baked Indian shortbread with cardamom — melt-in-mouth.</div>
+                    <div class="product-footer">
+                        <div class="price-block">
+                            <div class="weight">500g box</div>
+                            <div class="price">₹180</div>
+                        </div>
+                        <button class="add-btn" onclick="addToCart(this, 'Nankhatai', 180, '🍪')"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="biscuit">
+                <div class="product-img">🫓</div>
+                <div class="product-body">
+                    <h3>Mathri</h3>
+                    <div class="hindi-name">मठरी</div>
+                    <div class="desc">Flaky crispy fried crackers with ajwain & black pepper.</div>
+                    <div class="product-footer">
+                        <div class="price-block">
+                            <div class="weight">400g pack</div>
+                            <div class="price">₹90</div>
+                        </div>
+                        <button class="add-btn" onclick="addToCart(this, 'Mathri', 90, '🫓')"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="biscuit">
+                <div class="product-img">🥐</div>
+                <div class="product-body">
+                    <h3>Shakkar Para</h3>
+                    <div class="hindi-name">शक्कर पारा</div>
+                    <div class="desc">Sweet diamond-shaped fried pastry coated in sugar syrup.</div>
+                    <div class="product-footer">
+                        <div class="price-block">
+                            <div class="weight">500g box</div>
+                            <div class="price">₹100</div>
+                        </div>
+                        <button class="add-btn" onclick="addToCart(this, 'Shakkar Para', 100, '🥐')"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="biscuit">
+                <div class="product-img">🌙</div>
+                <div class="product-body">
+                    <h3>Namak Para</h3>
+                    <div class="hindi-name">नमक पारा</div>
+                    <div class="desc">Savory crispy strips with cumin and sesame seeds. Tea-time classic.</div>
+                    <div class="product-footer">
+                        <div class="price-block">
+                            <div class="weight">400g pack</div>
+                            <div class="price">₹80</div>
+                        </div>
+                        <button class="add-btn" onclick="addToCart(this, 'Namak Para', 80, '🌙')"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MITHAI -->
+            <div class="product-card" data-cat="mithai">
+                <div class="product-img">🍬<div class="product-badge">FESTIVE</div></div>
+                <div class="product-body">
+                    <h3>Besan Ladoo</h3>
+                    <div class="hindi-name">बेसन लड्डू</div>
+                    <div class="desc">Roasted gram flour ladoos with pure desi ghee and dry fruits.</div>
+                    <div class="product-footer">
+                        <div class="price-block">
+                            <div class="weight">500g box</div>
+                            <div class="price">₹250</div>
+                        </div>
+                        <button class="add-btn" onclick="addToCart(this, 'Besan Ladoo', 250, '🍬')"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="mithai">
+                <div class="product-img">🍡</div>
+                <div class="product-body">
+                    <h3>Til Gajak</h3>
+                    <div class="hindi-name">तिल गजक</div>
+                    <div class="desc">Sesame & jaggery brittle — traditional winter sweet of Varanasi.</div>
+                    <div class="product-footer">
+                        <div class="price-block">
+                            <div class="weight">400g pack</div>
+                            <div class="price">₹160</div>
+                        </div>
+                        <button class="add-btn" onclick="addToCart(this, 'Til Gajak', 160, '🍡')"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SPECIAL -->
+            <div class="product-card" data-cat="special">
+                <div class="product-img">⭐<div class="product-badge">NEW</div></div>
+                <div class="product-body">
+                    <h3>Family Gift Pack</h3>
+                    <div class="hindi-name">फैमिली गिफ्ट पैक</div>
+                    <div class="desc">Assorted namkeen & biscuits gift hamper — perfect for festivals & occasions.</div>
+                    <div class="product-footer">
+                        <div class="price-block">
+                            <div class="weight">1 kg assorted</div>
+                            <div class="price">₹450</div>
+                        </div>
+                        <button class="add-btn" onclick="addToCart(this, 'Family Gift Pack', 450, '⭐')"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="special">
+                <div class="product-img">🎁</div>
+                <div class="product-body">
+                    <h3>Premium Dry Fruit Mix</h3>
+                    <div class="hindi-name">प्रीमियम ड्राई फ्रूट मिक्स</div>
+                    <div class="desc">Roasted cashews, almonds, raisins & pistachios — healthy & delicious.</div>
+                    <div class="product-footer">
+                        <div class="price-block">
+                            <div class="weight">250g box</div>
+                            <div class="price">₹320</div>
+                        </div>
+                        <button class="add-btn" onclick="addToCart(this, 'Premium Dry Fruit Mix', 320, '🎁')"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about" class="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-visual">
+                <div class="about-main-card">🏪</div>
+                <div class="about-floating tl">
+                    <div class="emoji">✅</div>
+                    <div class="fl-text">
+                        <strong>100% Pure</strong>
+                        <span>शुद्ध सामग्री</span>
+                    </div>
+                </div>
+                <div class="about-floating br">
+                    <div class="emoji">🚚</div>
+                    <div class="fl-text">
+                        <strong>Home Delivery</strong>
+                        <span>घर तक पहुँचाएं</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-text">
+                <div class="section-label">हमारे बारे में · About Us</div>
+                <h3>परंपरागत स्वाद,<br>आधुनिक सुविधा</h3>
+                <p>पाण्डेय नमकीन एंड बिस्किट्स 2005 से वाराणसी के घरों में शुद्ध और ताज़ा नमकीन व बिस्किट पहुँचाते आ रहे हैं। हमारे उत्पाद पारंपरिक विधि से बनाए जाते हैं।</p>
+                <p>We use only the finest quality ingredients — zero artificial preservatives, zero compromise on taste. Every batch is made fresh so you get the crunchiest, most flavourful snacks.</p>
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <div class="num">20+</div>
+                        <div class="lbl">Years in Business</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="num">5000+</div>
+                        <div class="lbl">Happy Customers</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="num">30+</div>
+                        <div class="lbl">Unique Products</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="contact">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-left">
+                <div class="section-label">संपर्क करें · Contact</div>
+                <h2 class="section-title">Get in <span class="accent">Touch</span></h2>
+                <p class="section-sub">हम आपकी सेवा में हमेशा तैयार हैं</p>
+                <div class="contact-info-block">
+                    <a href="tel:+916386177283" class="contact-card">
+                        <div class="contact-card-icon saffron"><i class="fas fa-phone"></i></div>
+                        <div class="contact-card-text">
+                            <strong>+91 6386177283</strong>
+                            <span>Call us anytime 9am–9pm</span>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/916386177283" class="contact-card" target="_blank">
+                        <div class="contact-card-icon green"><i class="fab fa-whatsapp"></i></div>
+                        <div class="contact-card-text">
+                            <strong>WhatsApp Order</strong>
+                            <span>Send your order list directly</span>
+                        </div>
+                    </a>
+                    <div class="contact-card">
+                        <div class="contact-card-icon blue"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-card-text">
+                            <strong>Varanasi, Uttar Pradesh</strong>
+                            <span>Home delivery available nearby</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-right">
+                <h3>📩 Send a Quick Message</h3>
+                <div class="quick-form">
+                    <input type="text" placeholder="Your Name · आपका नाम" id="qName">
+                    <input type="tel" placeholder="Phone Number · फ़ोन नंबर" id="qPhone">
+                    <textarea placeholder="Your message or enquiry · आपका संदेश"></textarea>
+                    <button class="btn-send" onclick="sendWhatsAppMsg()">
+                        <i class="fab fa-whatsapp"></i> &nbsp;Send on WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <p>© 2025 <span>Pandey Namkeen & Biscuits</span> · पाण्डेय नमकीन एंड बिस्किट्स · Made with ❤️ in Varanasi</p>
+</footer>
+
+<!-- ── CART BAR ── -->
+<div class="cart-bar" id="cartBar">
+    <div class="cart-info">
+        <div class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCount">0</span>
+        </div>
+        <div class="cart-details">
+            <small id="cartItemsLabel">0 items in cart</small>
+            <strong id="cartTotal">₹0</strong>
+        </div>
+    </div>
+    <button class="checkout-btn" onclick="openCart()">Checkout →</button>
+</div>
+
+<!-- ── ORDER MODAL ── -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <button class="modal-close" onclick="closeCart()">✕</button>
+
+        <div id="cartView">
+            <h2>Your Order 🛒</h2>
+            <p class="modal-subtitle">अपना ऑर्डर जाँचें और दर्ज करें</p>
+
+            <div class="cart-items-list" id="cartItemsList"></div>
+
+            <div class="cart-total-row">
+                <span class="label">Total Amount</span>
+                <span class="total" id="modalTotal">₹0</span>
+            </div>
+
+            <div class="order-form">
+                <label>Your Name · नाम *</label>
+                <input type="text" id="custName" placeholder="Full Name">
+
+                <div class="form-row">
+                    <div>
+                        <label>Phone · फ़ोन *</label>
+                        <input type="tel" id="custPhone" placeholder="+91 XXXXX XXXXX">
+                    </div>
+                    <div>
+                        <label>Pincode (optional)</label>
+                        <input type="text" id="custPin" placeholder="Varanasi area">
+                    </div>
+                </div>
+
+                <label>Delivery Address · पता *</label>
+                <textarea id="custAddr" placeholder="House no., Street, Area, Varanasi..."></textarea>
+
+                <button class="submit-order" onclick="placeOrder()">
+                    <i class="fas fa-check-circle"></i> Confirm Order
+                </button>
+
+                <div class="or-divider">or</div>
+
+                <a class="whatsapp-order" id="waOrderBtn" href="#" target="_blank">
+                    <i class="fab fa-whatsapp" style="font-size:1.3rem"></i>
+                    Order via WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <div class="success-screen" id="successScreen">
+            <div class="success-icon">✓</div>
+            <h3>Order Placed! 🎉</h3>
+            <p>धन्यवाद! आपका ऑर्डर मिल गया।</p>
+            <p style="margin-top:8px">We will call you to confirm within <strong>30 minutes</strong>.</p>
+            <br>
+            <a class="whatsapp-order" id="waConfirmBtn" href="#" target="_blank" style="margin-top:10px">
+                <i class="fab fa-whatsapp" style="font-size:1.2rem"></i>
+                Also confirm on WhatsApp
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ── HAMBURGER ──
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            navLinks.classList.remove('open');
+        });
+    });
+
+    // ── CATEGORY TABS ──
+    document.querySelectorAll('.cat-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const cat = tab.dataset.cat;
+            document.querySelectorAll('.product-card').forEach(card => {
+                if (cat === 'all' || card.dataset.cat === cat) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    });
+
+    // ── CART STATE ──
+    let cart = [];
+
+    function addToCart(btn, name, price, emoji) {
+        const existing = cart.find(i => i.name === name);
+        if (existing) {
+            existing.qty++;
+        } else {
+            cart.push({ name, price, emoji, qty: 1 });
+        }
+        btn.classList.add('added');
+        btn.innerHTML = '<i class="fas fa-check"></i>';
+        setTimeout(() => {
+            btn.classList.remove('added');
+            btn.innerHTML = '<i class="fas fa-plus"></i>';
+        }, 1000);
+        updateCartBar();
+    }
+
+    function updateCartBar() {
+        const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+        const count = cart.reduce((s, i) => s + i.qty, 0);
+        document.getElementById('cartCount').textContent = count;
+        document.getElementById('cartItemsLabel').textContent = `${count} item${count !== 1 ? 's' : ''} in cart`;
+        document.getElementById('cartTotal').textContent = `₹${total}`;
+        document.getElementById('cartBar').classList.toggle('visible', count > 0);
+        document.getElementById('modalTotal').textContent = `₹${total}`;
+        updateWaLink();
+    }
+
+    function updateWaLink() {
+        const name = document.getElementById('custName')?.value || '';
+        const phone = document.getElementById('custPhone')?.value || '';
+        let msg = `🛒 *Order from Pandey Namkeen*\n\n`;
+        cart.forEach(i => {
+            msg += `${i.emoji} ${i.name} × ${i.qty} = ₹${i.price * i.qty}\n`;
+        });
+        msg += `\n*Total: ₹${cart.reduce((s,i) => s+i.price*i.qty,0)}*`;
+        if (name) msg += `\n\n👤 Name: ${name}`;
+        if (phone) msg += `\n📞 Phone: ${phone}`;
+        const addr = document.getElementById('custAddr')?.value;
+        if (addr) msg += `\n📍 Address: ${addr}`;
+        const url = `https://wa.me/916386177283?text=${encodeURIComponent(msg)}`;
+        const btn = document.getElementById('waOrderBtn');
+        if (btn) btn.href = url;
+    }
+
+    // ── CART MODAL ──
+    function openCart() {
+        renderCartItems();
+        document.getElementById('modalOverlay').classList.add('open');
+        document.getElementById('cartView').style.display = 'block';
+        document.getElementById('successScreen').classList.remove('show');
+    }
+
+    function closeCart() {
+        document.getElementById('modalOverlay').classList.remove('open');
+    }
+
+    function renderCartItems() {
+        const list = document.getElementById('cartItemsList');
+        if (cart.length === 0) {
+            list.innerHTML = '<div style="padding:24px;text-align:center;color:#aaa;font-size:0.9rem;">🛒 Your cart is empty. Add items from the menu!</div>';
+            return;
+        }
+        list.innerHTML = cart.map((item, idx) => `
+            <div class="cart-item-row">
+                <span class="item-emoji">${item.emoji}</span>
+                <span class="item-name">${item.name}</span>
+                <div class="item-qty-ctrl">
+                    <button class="qty-btn" onclick="changeQty(${idx},-1)">−</button>
+                    <span class="qty-num">${item.qty}</span>
+                    <button class="qty-btn" onclick="changeQty(${idx},1)">+</button>
+                </div>
+                <span class="item-subtotal">₹${item.price * item.qty}</span>
+            </div>
+        `).join('');
+    }
+
+    function changeQty(idx, delta) {
+        cart[idx].qty += delta;
+        if (cart[idx].qty <= 0) cart.splice(idx, 1);
+        renderCartItems();
+        updateCartBar();
+    }
+
+    function placeOrder() {
+        const name = document.getElementById('custName').value.trim();
+        const phone = document.getElementById('custPhone').value.trim();
+        const addr = document.getElementById('custAddr').value.trim();
+        if (!name || !phone || !addr) {
+            alert('Please fill your Name, Phone & Address to place the order.');
+            return;
+        }
+        if (cart.length === 0) {
+            alert('Your cart is empty! Add items first.');
+            return;
+        }
+        updateWaLink();
+        let confirmMsg = `🛒 *New Order — Pandey Namkeen*\n\n`;
+        cart.forEach(i => {
+            confirmMsg += `${i.emoji} ${i.name} × ${i.qty} = ₹${i.price * i.qty}\n`;
+        });
+        confirmMsg += `\n*Total: ₹${cart.reduce((s,i) => s+i.price*i.qty,0)}*`;
+        confirmMsg += `\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Address: ${addr}`;
+        const confUrl = `https://wa.me/916386177283?text=${encodeURIComponent(confirmMsg)}`;
+        document.getElementById('waConfirmBtn').href = confUrl;
+        document.getElementById('cartView').style.display = 'none';
+        document.getElementById('successScreen').classList.add('show');
+        cart = [];
+        updateCartBar();
+    }
+
+    function sendWhatsAppMsg() {
+        const name = document.getElementById('qName').value.trim() || 'Customer';
+        const phone = document.getElementById('qPhone').value.trim();
+        const msg = `Hello! I'm ${name}${phone ? ` (${phone})` : ''}. I'd like to enquire about your products.`;
+        window.open(`https://wa.me/916386177283?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    document.getElementById('modalOverlay').addEventListener('click', function(e) {
+        if (e.target === this) closeCart();
+    });
+
+    document.querySelectorAll('#custName, #custPhone, #custAddr').forEach(el => {
+        el.addEventListener('input', updateWaLink);
+    });
+
+    // Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+            .then(() => console.log('SW registered'))
+            .catch(e => console.log('SW error', e));
+    }
+</script>
+</body>
+</html>
